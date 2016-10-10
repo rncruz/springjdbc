@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.context.annotation.ImportResource;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Application implements CommandLineRunner {
 
 	//local class objects
     @Autowired JdbcTemplate CLEAR_PROD;	
+	private SimpleJdbcCall jdbcStoredProcedure;
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 	
     public static void main(String args[]) {
@@ -26,9 +28,12 @@ public class Application implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		System.out.println("Hello, world!");
 		
-		String query = "SELECT TOP 100 CONVERT(VARCHAR,[LOGIN_DATE]) FROM [CaseWiseCMI].[dbo].[rptEvolveLogins]";
+		String query = "SELECT TOP 100 CONVERT(VARCHAR,[LOGIN_DATE]) FROM  [CaseWiseCMI].[dbo].[rptEvolveLogins]";
 		//String query = "SELECT TOP 100 [DAY_OF_WEEK] FROM [CaseWiseCMI].[dbo].[rptEvolveLogins]";
 		List<String> strings2 = (List<String>) CLEAR_PROD.queryForList(query, String.class);
 		for (String item : strings2) { System.out.println(item); }			
+		
+        this.jdbcStoredProcedure = new SimpleJdbcCall(CLEAR_PROD).withProcedureName("rptEvolveLogins_Insert");
+		this.jdbcStoredProcedure.execute();
 	}
 }
