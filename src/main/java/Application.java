@@ -26,7 +26,7 @@ public class Application implements CommandLineRunner {
 	public void run(String... strings) throws Exception {
 		System.out.println("Hello, world!");
 		
-		String query = "SELECT TOP 100 [DAY_OF_WEEK] FROM [CaseWiseCMI].[dbo].[rptEvolveLogins]";
+		String query = "SELECT TOP 100 CONVERT(VARCHAR,[LOGIN_DATE]) FROM [CaseWiseCMI].[dbo].[rptEvolveLogins]";
 		List<String> strings2 = (List<String>) CLEAR_PROD.queryForList(query, String.class);
 		for (String item : strings2) { System.out.println(item); }			
 	}
