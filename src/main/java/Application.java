@@ -29,7 +29,7 @@ public class Application implements CommandLineRunner {
 		System.out.println("Hello, world!");
 		
 		for (String storedProc : strings) { 
-			System.out.println("About to Execute Stored Procedure: " + storedProc); 
+			System.out.println("Executing Stored Procedure: " + storedProc); 
 		    this.jdbcStoredProcedure = new SimpleJdbcCall(CLEAR_PROD).withProcedureName(storedProc);
 			this.jdbcStoredProcedure.execute();
 		}
