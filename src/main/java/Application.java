@@ -26,15 +26,17 @@ public class Application implements CommandLineRunner {
 
     @Override    
 	public void run(String... strings) throws Exception {
-		System.out.println("Hello, world!");		
-		for (String item : strings) { System.out.println(item); }
+		System.out.println("Hello, world!");
+		
+		for (String storedProc : strings) { 
+			System.out.println("About to Execute Stored Procedure: " + storedProc); 
+		    this.jdbcStoredProcedure = new SimpleJdbcCall(CLEAR_PROD).withProcedureName(storedProc);
+			this.jdbcStoredProcedure.execute();
+		}
 				
 		//String query = "SELECT TOP 100 CONVERT(VARCHAR,[LOGIN_DATE]) FROM  [CaseWiseCMI].[dbo].[rptEvolveLogins]";
 		//String query = "SELECT TOP 100 [DAY_OF_WEEK] FROM [CaseWiseCMI].[dbo].[rptEvolveLogins]";
 		//List<String> dbStrings = (List<String>) CLEAR_PROD.queryForList(query, String.class);
 		//for (String item : dbStrings) { System.out.println(item); }
-		
-        this.jdbcStoredProcedure = new SimpleJdbcCall(CLEAR_PROD).withProcedureName("rptEvolveLogins_Insert");
-		this.jdbcStoredProcedure.execute();
 	}
 }
