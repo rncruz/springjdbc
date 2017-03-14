@@ -9,13 +9,14 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 Technology stack:
-Any Text Editor or Java IDE
-JDK 1.7
-Apache Maven 3.3
-Apache Maven SQLJDBC
-Jenkins (for scheduling/automation)
-Jenkins Maven Plugin
-Jenkins Git Plugin
+* Any Text Editor or Java IDE
+* JDK 1.7
+* Apache Maven 3.3
+* Apache Maven SQLJDBC
+* Jenkins (for scheduling/automation)
+* Jenkins Maven Plugin
+* Jenkins Git Plugin
+
 
 ```
 Give examples
