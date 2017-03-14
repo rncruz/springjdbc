@@ -1,6 +1,6 @@
 # springjdbc
 
-One Paragraph of project description goes here
+The springjdbc project is both a proof of concept and an aplication that can be used in a Production environment. This app does one thing: it will connect to a (MS SQL) database and execute the stored procedure that you pass in as an argument.
 
 ## Getting Started
 
@@ -8,7 +8,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Technology stack:
+Any Text Editor or Java IDE
+JDK 1.7
+Apache Maven 3.3
+Apache Maven SQLJDBC
+Jenkins (for scheduling/automation)
+Jenkins Maven Plugin
+Jenkins Git Plugin
 
 ```
 Give examples
